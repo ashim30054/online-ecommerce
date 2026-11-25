@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MobileShop - Product Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Common Header -->
+    <div id="header"></div>
+
+    <h1>Product Details</h1>
+
+    <div id="details"></div>
+    <br>
+    <a href="index.html">Back to Home</a>
+    <!-- Common Footer -->
+    <div id="footer"></div>
+
+    <script src="common.js"></script>
+    <script src="data.js"></script>
+    <script>
+        // Retrieve product information
+        let p = JSON.parse(localStorage.getItem("product"));
+        // Display complete product details
+        document.getElementById("details").innerHTML = `
+            <img src="${p.image}" width="250">
+            <h2>${p.name}</h2>
+            <p>Product ID: ${p.id}</p>
+            <p>Category: ${p.category}</p>
+            <p>Price: ₹${p.price}</p>
+            <p>${p.description}</p>
+            <button onclick="buyProduct()">Buy Now</button>
+        `;
+        // Buy Product
+
+        function buyProduct() {
+            let user = localStorage.getItem("currentUser");
+            if (user) {
+                alert("Thank you " + user + "! Purchase successful.");
+            }
+            else {
+                alert("Please login before purchasing.");
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

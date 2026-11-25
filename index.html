@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MobileShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Common Header -->
+    <div id="header"></div>
+    <h1>Welcome to MobileShop</h1>
+    <h2>Featured Product</h2>
+
+    <div id="product"></div>
+
+    <!-- Common Footer -->
+    <div id="footer"></div>
+
+    <script src="common.js"></script>
+    <script src="data.js"></script>
+
+    <script>
+        // Retrieve product from localStorage
+        let p = JSON.parse(localStorage.getItem("product"));
+        // Display product
+        document.getElementById("product").innerHTML = `
+            <img src="${p.image}" width="200">
+            <h3>${p.name}</h3>
+            <p>Product ID: ${p.id}</p>
+            <p>Price: ₹${p.price}</p>
+            <a href="product.html">View Details</a>
+        `;
+    </script>
+</body>
+</html>

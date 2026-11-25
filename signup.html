@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MobileShop - Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Common Header -->
+    <div id="header"></div>
+
+    <h1>Create Account</h1>
+    <form id="signupForm">
+        <label>Name:</label>
+        <input type="text" id="name"
+               placeholder="Enter Name" required>
+        <label>Email:</label>
+        <input type="email" id="email"
+               placeholder="Enter Email" required>
+        <label>Password:</label>
+        <input type="password" id="password"
+               placeholder="Enter Password" required>
+        <button type="submit">Signup</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <p>
+        Already registered?
+        <a href="login.html">Login here</a>
+    </p>
+
+    <!-- Common Footer -->
+    <div id="footer"></div>
+
+    <script src="common.js"></script>
+
+    <script>
+        document.getElementById("signupForm")
+        .addEventListener("submit", function(e) {
+            e.preventDefault();
+            // Get form values
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            // Create user object
+            let user = {
+                name: name,
+                email: email,
+                password: password
+            };
+            // Store user information
+            localStorage.setItem("user", JSON.stringify(user));
+            document.getElementById("msg").innerHTML =
+                "Registration Successful!";
+            document.getElementById("signupForm").reset();
+        });
+    </script>
+
+</body>
+</html>

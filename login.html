@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MobileShop - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Common Header -->
+    <div id="header"></div>
+    <h1>User Login</h1>
+    <form id="loginForm">
+        <label>Email:</label>
+        <input type="email" id="email"
+               placeholder="Enter Email" required>
+        <label>Password:</label>
+        <input type="password" id="password"
+               placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <p>
+        New user?
+        <a href="signup.html">Create an account</a>
+    </p>
+
+    <!-- Common Footer -->
+    <div id="footer"></div>
+    <script src="common.js"></script>
+
+    <script>
+        document.getElementById("loginForm")
+        .addEventListener("submit", function(e) {
+            e.preventDefault();
+            // Get entered values
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            // Retrieve registered user
+            let user = JSON.parse(localStorage.getItem("user"));
+            // Validate credentials
+            if (user && user.email === email &&
+                user.password === password) {
+                // Store currently logged-in user
+                localStorage.setItem("currentUser", user.name);
+                document.getElementById("msg").innerHTML =
+                    "Login Successful! Welcome " + user.name;
+            }
+            else {
+                document.getElementById("msg").innerHTML =
+                    "Invalid Email or Password";
+            }
+        });
+    </script>
+
+</body>
+</html>
